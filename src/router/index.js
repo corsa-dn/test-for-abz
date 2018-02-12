@@ -6,7 +6,10 @@ import Contacts from '@/components/Contacts'
 Vue.use(Router)
 
 export default new Router({
-  routes: [{
+  hashbang: false,
+  mode: 'history',
+  routes: [
+    {
       path: '/',
       component: Home,
     },
