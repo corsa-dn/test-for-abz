@@ -38,7 +38,6 @@ export default {
 </script>
 
 <style lang="scss">
-,
 .l-aside {
     flex: 0 0 240px;
     max-width: 26%;
@@ -47,8 +46,6 @@ export default {
     flex: 0 0 240px;
     max-width: 26%;
 }
-
-.main-content {}
 
 .f-container {
     display: -webkit-flex;

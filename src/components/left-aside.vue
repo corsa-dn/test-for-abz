@@ -34,28 +34,6 @@
                         <a href="#">Follow Now</a>
                     </div>
                 </div>
-                <!-- <div class="company__item">
-                    <div class="item__img">
-                        <img src="../../static/img/companies/2.png" alt="">
-                    </div>
-                    <div class="item__details">
-                        <h5>Company Name</h5>
-                        <p>Service Provider</p>
-                        <p>New York, USA</p>
-                        <a href="#">Follow Now</a>
-                    </div>
-                </div>
-                <div class="company__item">
-                    <div class="item__img">
-                        <img src="../../static/img/companies/3.png" alt="">
-                    </div>
-                    <div class="item__details">
-                        <h5>Company Name</h5>
-                        <p>Supplier</p>
-                        <p>London, England</p>
-                        <a href="#">Follow Now</a>
-                    </div>
-                </div> -->
             </div>
         </div>
         <hr>

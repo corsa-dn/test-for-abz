@@ -17,32 +17,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="suggest__item">
-                <h5>Mary Carpenter</h5>
-                <div class="f-container">
-                    <div class="suggest__photo">
-                        <img src="../../static/img/users/2.png" alt="">
-                    </div>
-                    <div class="suggest__details">
-                        <p>Dentist (Practice Owner)</p>
-                        <p class="details__loc">London, England</p>
-                        <a href="#">Add friend</a>
-                    </div>
-                </div>
-            </div>
-            <div class="suggest__item">
-                <h5>Danielle Salazar</h5>
-                <div class="f-container">
-                    <div class="suggest__photo">
-                        <img src="../../static/img/users/3.png" alt="">
-                    </div>
-                    <div class="suggest__details">
-                        <p>Dentist (Practice Owner)</p>
-                        <p class="details__loc">Belgrade, Serbia</p>
-                        <a href="#">Add friend</a>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
     <hr>
@@ -61,17 +35,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="product__item">
-                <h5>Product name</h5>
-                <div class="f-container">
-                    <div class="product__photo">
-                        <img src="../../static/img/prod/2.png" alt="">
-                    </div>
-                    <div class="product__details">
-                        <p>Product Short Description. The quick brown fox jumps over the lazy dog.</p>
-                    </div>
-                </div>
-            </div> -->
             <hr>
             <div class="adv-right">
                 <h4>Advertisement</h4>

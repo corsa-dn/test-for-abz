@@ -1,54 +1,54 @@
 <template>
 <div id="contacts-page">
-  <div class="contacts__head">
-    <div class="row">
-      <div class="col">
-        <a href="index.html"><img class="head__logo" src="img/logo.png" alt=""></a>
-      </div>
-      <div class="col">
-        <button class="head__btn">Log In Now</button>
-      </div>
+    <div class="contacts__head">
+        <div class="row">
+            <div class="col">
+                <a href="index.html"><img class="head__logo" src="img/logo.png" alt=""></a>
+            </div>
+            <div class="col">
+                <button class="head__btn">Log In Now</button>
+            </div>
+        </div>
+        <div class="head__text">
+            <h2>Home of Dentistry</h2>
+            <p>Denteez was created by dentists for dentistry in order make the life of everyone involved in dentistry easier.</p>
+        </div>
     </div>
-    <div class="head__text">
-      <h2>Home of Dentistry</h2>
-      <p>Denteez was created by dentists for dentistry in order make the life of everyone involved in dentistry easier.</p>
-    </div>
-  </div>
-  <section class="form-area">
-    <form enctype="multipart/form-data" action="http://504080.com/api/v1/support" method="post">
-      <div class="form-wrapp">
-        <label for="">Enquiry Type *</label>
-        <select @change="watchSelect()" name="enquiry_type" id="">
+    <section class="form-area">
+        <form enctype="multipart/form-data" action="http://504080.com/api/v1/support" method="post">
+            <div class="form-wrapp">
+                <label for="">Enquiry Type *</label>
+                <select @change="watchSelect()" name="enquiry_type" id="">
           <option v-for="type in enqTypes" :value="type.name">{{type.name}}</option>
         </select>
-        <input class="detail_input" placeholder="Other" name="other-details" type="text">
-        <div class="row">
-          <div class="col">
-            <label for="">Name</label>
-            <input required name="user_name" type="text" placeholder="Dentist">
-          </div>
-          <div class="col">
-            <label for="">Email *</label>
-            <input name="email" type="email" placeholder="rachelm@gmail.com">
-          </div>
-        </div>
-        <label for="">Subject *</label>
-        <input name="subject" type="text">
-        <div class="textarea-labels">
-          <label for="">Description *</label>
-          <label id="content-counter" for=""><span>{{taLength}}</span>/1000</label>
-        </div>
-        <textarea v-model="textareaContent" maxlength="1000" pattern="[A-Za-zА-Яа-яЁё]{1000}" name="description" id="" rows="7"></textarea>
-        <div class="drop-photo-area">
-          <h5>Add photo</h5>
-          <p>Minimum size of 300x300 jpeg ipg png 5mb</p>
-          <input @change="imgValid()" accept="image/jpeg,image/png" type="file" name="file" class="img-input" />
-        </div>
-        <img id="upload-preview" src="" alt="">
-      </div>
-      <button type="submit" class="sbmt-btn">Submit</button>
-    </form>
-  </section>
+                <input class="detail_input" placeholder="Other" name="other-details" type="text">
+                <div class="row">
+                    <div class="col">
+                        <label for="">Name</label>
+                        <input required name="user_name" type="text" placeholder="Dentist">
+                    </div>
+                    <div class="col">
+                        <label for="">Email *</label>
+                        <input name="email" type="email" placeholder="rachelm@gmail.com">
+                    </div>
+                </div>
+                <label for="">Subject *</label>
+                <input name="subject" type="text">
+                <div class="textarea-labels">
+                    <label for="">Description *</label>
+                    <label id="content-counter" for=""><span>{{taLength}}</span>/1000</label>
+                </div>
+                <textarea v-model="textareaContent" maxlength="1000" pattern="[A-Za-zА-Яа-яЁё]{1000}" name="description" id="" rows="7"></textarea>
+                <div class="drop-photo-area">
+                    <h5>Add photo</h5>
+                    <p>Minimum size of 300x300 jpeg ipg png 5mb</p>
+                    <input @change="imgValid()" accept="image/jpeg,image/png" type="file" name="file" class="img-input" />
+                </div>
+                <img id="upload-preview" src="" alt="">
+            </div>
+            <button type="submit" class="sbmt-btn">Submit</button>
+        </form>
+    </section>
 </div>
 </template>
 
@@ -59,59 +59,59 @@ import $ from 'jquery'
 Vue.use(VR);
 
 export default {
-  data() {
-    return {
-      enqTypesFetchUrl: 'http://504080.com/api/v1/directories/enquiry-types',
-      enqTypes: [],
-      textareaContent: '',
-      sendDataUrl: 'http://504080.com/api/v1/support'
-    }
-  },
-  methods: {
-    fetchEnqTypes: function() {
-      this.$http.get(this.enqTypesFetchUrl).then(function(response) {
-        this.enqTypes = response.body.data;
-      }, function(err) {
-        console.log(err);
-      })
-    },
-    watchSelect: function() {
-      if ($('select').val() == 'Other') {
-        $('.detail_input').slideDown(200)
-      } else {
-        $('.detail_input').slideUp(200)
-      }
-    },
-    imgValid: function() {
-      var input = $('.img-input')[0];
-      if (input.files && input.files[0]) {
-        if (input.files[0].type.match('image.*')) {
-          var reader = new FileReader();
-          reader.onload = function(e) {
-            if (e.total < 5242880) {
-              $('#upload-preview').attr('src', e.target.result);
-              $('.drop-photo-area').hide()
-            } else {
-              console.log('Файл не должен весить больше 5мб');
-            }
-          }
-          reader.readAsDataURL(input.files[0]);
-        } else {
-          console.log('К загрузке доступно только изображение');
+    data() {
+        return {
+            enqTypesFetchUrl: 'http://504080.com/api/v1/directories/enquiry-types',
+            enqTypes: [],
+            textareaContent: '',
+            sendDataUrl: 'http://504080.com/api/v1/support'
         }
-      } else {
-        console.log('Загрузка отменена');
-      }
     },
-  },
-  created: function() {
-    this.fetchEnqTypes();
-  },
-  computed: {
-    taLength: function() {
-      return this.textareaContent.length;
+    methods: {
+        fetchEnqTypes() {
+            this.$http.get(this.enqTypesFetchUrl).then(function(response) {
+                this.enqTypes = response.body.data;
+            }, function(err) {
+                console.log(err);
+            })
+        },
+        watchSelect() {
+            if ($('select').val() == 'Other') {
+                $('.detail_input').slideDown(200)
+            } else {
+                $('.detail_input').slideUp(200)
+            }
+        },
+        imgValid() {
+            var input = $('.img-input')[0];
+            if (input.files && input.files[0]) {
+                if (input.files[0].type.match('image.*')) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        if (e.total < 5242880) {
+                            $('#upload-preview').attr('src', e.target.result);
+                            $('.drop-photo-area').hide()
+                        } else {
+                            console.log('Файл не должен весить больше 5мб');
+                        }
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                } else {
+                    console.log('К загрузке доступно только изображение');
+                }
+            } else {
+                console.log('Загрузка отменена');
+            }
+        },
+    },
+    created: function() {
+        this.fetchEnqTypes();
+    },
+    computed: {
+        taLength() {
+            return this.textareaContent.length;
+        }
     }
-  }
 }
 </script>
 

@@ -47,7 +47,7 @@ export default {
     };
   },
   methods: {
-    fetchServices: function() {
+    fetchServices() {
       this.$http.get(this.fetchUrl, {
         headers: {
           'authorization': this.authToken
