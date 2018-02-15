@@ -29,16 +29,16 @@
                     </div>
                     <div class="col">
                         <label for="">Email *</label>
-                        <input name="email" type="email" placeholder="rachelm@gmail.com">
+                        <input @keyup="validEmail()" :class="{'input-error':!errors}" required v-model="email" name="email" type="email" placeholder="rachelm@gmail.com">
                     </div>
                 </div>
                 <label for="">Subject *</label>
-                <input name="subject" type="text">
+                <input required name="subject" type="text">
                 <div class="textarea-labels">
                     <label for="">Description *</label>
                     <label id="content-counter" for=""><span>{{taLength}}</span>/1000</label>
                 </div>
-                <textarea v-model="textareaContent" maxlength="1000" pattern="[A-Za-zА-Яа-яЁё]{1000}" name="description" id="" rows="7"></textarea>
+                <textarea required v-model="textareaContent" maxlength="1000" pattern="[A-Za-zА-Яа-яЁё]{1000}" name="description" id="" rows="7"></textarea>
                 <div class="drop-photo-area">
                     <h5>Add photo</h5>
                     <p>Minimum size of 300x300 jpeg ipg png 5mb</p>
@@ -56,6 +56,7 @@
 import Vue from 'vue'
 import VR from 'vue-resource'
 import $ from 'jquery'
+
 Vue.use(VR);
 
 export default {
@@ -64,7 +65,9 @@ export default {
             enqTypesFetchUrl: 'http://504080.com/api/v1/directories/enquiry-types',
             enqTypes: [],
             textareaContent: '',
-            sendDataUrl: 'http://504080.com/api/v1/support'
+            sendDataUrl: 'http://504080.com/api/v1/support',
+            email: '',
+            errors: true
         }
     },
     methods: {
@@ -103,14 +106,20 @@ export default {
                 console.log('Загрузка отменена');
             }
         },
+        validEmail: function() {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return this.errors = re.test(this.email);
+        }
     },
     created: function() {
         this.fetchEnqTypes();
+        // this.watchSelect();
     },
     computed: {
         taLength() {
             return this.textareaContent.length;
-        }
+        },
+
     }
 }
 </script>
@@ -120,6 +129,18 @@ $prime: #87b448;
 $prime-dark: #73993d;
 $text: #59606b;
 $second: #e0e2e6;
+
+body {
+    overflow-x: hidden;
+}
+
+.input-error {
+    box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.5);
+}
+
+input {
+    transition: box-shadow ease 0.2s;
+}
 
 .contacts__head {
     position: relative;
